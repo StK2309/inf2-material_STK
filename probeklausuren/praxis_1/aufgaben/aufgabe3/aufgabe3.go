@@ -10,6 +10,11 @@ package aufgabe3
 // Falls keine solchen Nachbarn existieren, soll nil zurückgegeben werden.
 func (n *Node) FirstNeighbourStartingWith(prefix string) *Node {
 	var result *Node
-	// TODO
+	for _, neighbour := range n.neighbours {
+		if len(neighbour.Label) >= len(prefix) && neighbour.Label[:len(prefix)] == prefix {
+			result = neighbour
+			return result
+		}
+	}
 	return result
 }
