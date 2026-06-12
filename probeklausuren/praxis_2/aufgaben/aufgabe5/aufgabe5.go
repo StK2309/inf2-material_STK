@@ -7,6 +7,8 @@ package aufgabe5
 
 // Size liefert die Anzahl der Knoten im Baum.
 func (n *Node) Size() int {
-	// TODO
-	return 0
+	if n.IsEmpty() {
+		return 0
+	}
+	return 1 + n.Left.Size() + n.Right.Size()
 }

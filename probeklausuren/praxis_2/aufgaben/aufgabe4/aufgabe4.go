@@ -11,7 +11,23 @@ package aufgabe4
 // Der Knoten n selbst ist in 0 Schritten von n aus erreichbar,
 // seine direkten Nachbarn sind in 1 Schritt erreichbar, usw.
 func (n *Node) NodesWithDistance(d int) []*Node {
-	result := []*Node{n}
-	// TODO
-	return result
+	if d == 0 {
+		return []*Node{n}
+	}
+
+	current := []*Node{n}
+
+	for i := 0; i < d; i++ {
+		nextSet := map[*Node]bool{}
+		for _, node := range current {
+			for _, neighbour := range node.neighbours {
+				nextSet[neighbour] = true
+			}
+		}
+		current = []*Node{}
+		for node := range nextSet {
+			current = append(current, node)
+		}
+	}
+	return current
 }
