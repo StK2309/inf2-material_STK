@@ -9,9 +9,24 @@ import "slices"
 
 // ReachableNodes soll eine Liste aller von n aus erreichbaren Knoten liefern.
 func (n *Node) ReachableNodes() []*Node {
+	/* visitedNodes := []*Node{}
+		newNodes := []*Node{n}
+
+		for len(newNodes) > 0 {
+			current := newNodes[len(newNodes)-1]
+			visitedNodes = append(visitedNodes, current)
+			newNodes = newNodes[:len(newNodes)-1]
+			for _, neighbours := range current.neighbours {
+				if !slices.Contains(visitedNodes, neighbours) {
+					newNodes = append(newNodes, neighbours)
+				}
+			}
+		}
+		return visitedNodes
+	} */
+
 	visitedNodes := []*Node{}
 	newNodes := []*Node{n}
-
 	for len(newNodes) > 0 {
 		current := newNodes[len(newNodes)-1]
 		visitedNodes = append(visitedNodes, current)
